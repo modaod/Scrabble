@@ -1,0 +1,40 @@
+<header>
+    <h1 class="header-title">
+        DICTIONNAIRES
+    </h1>
+    <ul class="header-navigation">
+        <li class="header-navigation-item">
+            <a class="header-link">DICTIONNAIRE</a>
+        </li>
+        <li class="header-navigation-item">
+            <a class="header-link" routerLink="/admin/virtual-player-name" routerLinkActive="active">NOMS DES JOUEURS VIRTUELS</a>
+        </li>
+    </ul>
+    <ul class="header-navigation nav-end">
+        <li class="header-navigation-item font-italic">
+            <a class="header-link" routerLink="/admin" routerLinkActive="active">RETOUR</a>
+        </li>
+    </ul>
+</header>
+
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-primary" (click)='onCreate()'>Ajouter un dictionnaire</button>
+    <button type="button" class="btn btn-primary">Supprimer tous les dictionnaires</button>
+</div>
+
+<ul class='list-group'>
+    <li class='list-group-item' *ngFor="let dict of dictionaries; let i = index">
+        <h3> Titre: {{ dict.title }} </h3>
+        <h4>Description: {{ dict.description }}</h4>
+        <p *ngIf='i === this.defaultDictIndex'>Note: dictionnaire par défaut. <br>
+            Ce dictionnaire ne peut être modifié ni supprimé.
+        </p>
+        <button class='btn-primary' (click)='onDownload(i)'>Télécharger</button>
+        <button *ngIf='i !== this.defaultDictIndex' class='btn-success' (click)='onModify(i)'>Modifier</button>
+        <button *ngIf='i !== this.defaultDictIndex' class='btn-danger' (click)='onDelete(i)'>Supprimer</button>
+    </li>
+</ul>
+
+<div class='error' *ngIf='serverNotFound'>
+    <h1>404 ERROR SERVER NOT FOUND</h1>
+</div>

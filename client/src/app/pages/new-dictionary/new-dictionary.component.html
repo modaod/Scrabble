@@ -1,0 +1,13 @@
+<div class='container'>
+    <div class="col-sm-6 offset-sm-3 mt-2">
+        <form [formGroup]='fileForm' (ngSubmit)='onSubmit()'>
+            <div class="form-group">
+                <label for="newfile">Importer votre nouveau dictionnaire</label>
+                <input #inputFile type="file" id="newfile" formControlName="newfile" class="form-control" (change)="onChange($event)" accept=".json, .JSON">
+            </div>
+            <button class="btn btn-primary" type='submit'
+                    [disabled]="!this.nameAndFormatValid">Soumettre</button>
+            <p class="alert-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+        </form>
+    </div>
+</div>

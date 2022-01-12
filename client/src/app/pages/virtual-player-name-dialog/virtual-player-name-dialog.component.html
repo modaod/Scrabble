@@ -1,0 +1,29 @@
+<section>
+    <div class="player-name">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Entrez un nom</mat-label>
+            <input matInput placeholder="Entrez le nom du joueur virtuel" [formControl]="nameControl" required (ngModelChange)="onChange()">
+        </mat-form-field>
+        <mat-error *ngIf="!nameValid">Ce nom existe déja! </mat-error>
+        <mat-error *ngIf="nameControl.hasError('pattern')">Le nom doit être composé que des lettre! </mat-error>
+
+        <mat-form-field *ngIf='!this.virtualPlayerNameService.modificationDialog' appearance="fill">
+            <mat-label>Veuillez choisir le categorie</mat-label>
+            <mat-select [formControl]="categoryControl" [(ngModel)]='selected' required>
+                <mat-option value='beginner'>Debutant</mat-option>
+                <mat-option value='advanced'>Avancé</mat-option>
+            </mat-select>
+            <mat-error *ngIf="categoryControl.hasError('required')">Choississez le categorie</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button link mat-dialog-close color="warn" (click)="onReturn()">Retour</button>
+
+        <button [disabled]="nameControl.invalid || !nameValid"
+                mat-raised-button mat-dialog-close
+                color="primary"
+                (click)="onSubmit()">
+            Soumettre
+        </button>
+    </div>
+</section>

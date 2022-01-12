@@ -1,0 +1,48 @@
+<header>
+    <h1 class="header-title">
+        MODE ADMIN
+    </h1>
+    <ul class="header-navigation">
+        <li class="header-navigation-item">
+            <a class="header-link" routerLink="/admin/dictionary-list" routerLinkActive="active">DICTIONNAIRES</a>
+        </li>
+        <li class="header-navigation-item">
+            <a class="header-link" routerLink="/admin/virtual-player-name" routerLinkActive="active">NOMS DES JOUEURS VIRTUELS</a>
+        </li>
+    </ul>
+    <ul class="header-navigation nav-end">
+        <li class="header-navigation-item font-italic">
+            <a class="header-link" routerLink="/home" routerLinkActive="active">RETOURNER AU MENU PRINCIPAL</a>
+        </li>
+    </ul>
+</header>
+
+
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-primary" (click)='onReset()'>REINITIALISER LE SYSTEME</button>
+</div>
+
+<div class="btn-group btn-group-lg">
+    <button type="button" class="btn btn-primary" routerLink="/admin/dictionary-list">Voir liste des dictionnaires</button>
+    <button type="button" class="btn btn-primary" routerLink="/admin/virtual-player-name">Voir liste des noms des joueurs virtuels</button>
+</div>
+
+<br>
+<h4>Cette demande de connexion est juste pour la forme</h4>
+<h5>Cliquez sur les liens en dessus pour vous diriger à une page</h5>
+<br>
+
+<div class="col-sm-8 offset-sm-2 mt-2">
+    <form [formGroup]="loginForm">
+        <div class="form-group">
+            <label for="email">Adresse mail</label>
+            <input type="email" id="email" formControlName="email" class="form-control" placeholder="vous n'avez rien à saisir">
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" formControlName="password" class="form-control" placeholder="vous n'avez rien à saisir">
+        </div>
+        <button class="btn btn-success" [disabled]="loginForm.invalid">Connexion</button>
+    </form>
+    <p>{{ errorMessage }}</p>
+</div>
