@@ -1,6 +1,5 @@
 # LOG2990 - Code de base
 
-Code de base à utiliser pour démarrer le développement de votre projet.
 Le code contient 2 projets séparés :
 
 -   client : le site Web fait avec le cadriciel(_framework_) **Angular**.
