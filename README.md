@@ -1,4 +1,4 @@
-# LOG2990 - Code de base
+# Projet : Developpement Web
 
 Le code contient 2 projets séparés :
 
