@@ -1,5 +1,6 @@
 #ignoring .vscode and intelliJ folder but we keep some files for debuging
 /.vscode/chrome
+/.vscode/
 /.vs/
 /.idea
 
