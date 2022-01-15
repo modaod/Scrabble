@@ -8,6 +8,7 @@ import { CommunicationService } from '@app/services/communication.service';
 import { GameMasterService } from '@app/services/game-master.service';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-main-page',
     templateUrl: './main-page.component.html',
@@ -17,7 +18,12 @@ export class MainPageComponent {
     readonly title: string = 'LOG2990';
     message: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-    constructor(private readonly communicationService: CommunicationService, private gameMaster: GameMasterService, public dialog: MatDialog) {}
+    constructor(
+        private readonly communicationService: CommunicationService,
+        private gameMaster: GameMasterService,
+        public dialog: MatDialog,
+        private router: Router,
+    ) {}
     openDialog() {
         this.dialog.open(GameModeComponent);
     }
@@ -28,6 +34,9 @@ export class MainPageComponent {
     setClassicRules(): void {
         this.gameMaster.gameRules = CLASSIC_RULES;
         this.openDialog();
+    }
+    openAdmin() {
+        this.router.navigateByUrl('/admin');
     }
     sendTimeToServer(): void {
         const newTimeMessage: Message = {
